@@ -1,0 +1,30 @@
+name: Open Banking Gateway - Admin Frontend
+
+on:
+  push:
+    branches:
+      - master
+      - stage
+      - dev
+      - feature/github_actions
+  pull_request:
+    types:
+      - closed
+    branches: 
+      - dev
+
+jobs:
+  deployment-steps:
+    runs-on: ubuntu-latest
+    services:
+      node:
+        image: node:14.15.0-alpine
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache Node Modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: v1-dependencies-{{ checksum "package.json" }}
+          restore-keys: v1-dependencies-
