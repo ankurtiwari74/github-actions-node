@@ -4,7 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "tsc": "tsc -w",
+    "tsc:watch": "tsc -w",
+    "start": "set REACT_APP_BACKEND_TYPE=aws&&react-scripts start",
+    "start:local": "set REACT_APP_BACKEND_TYPE=local&&react-scripts start",
+    "build:qa": "REACT_APP_BACKEND_TYPE=aws REACT_APP_ENV=qa react-scripts build",
+    "build:stage": "REACT_APP_BACKEND_TYPE=aws REACT_APP_ENV=stage react-scripts build",
+    "build:prod": "REACT_APP_BACKEND_TYPE=aws REACT_APP_ENV=prod react-scripts build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "repository": {
     "type": "git",
